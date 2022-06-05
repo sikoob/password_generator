@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passwort Generator</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
@@ -12,25 +13,35 @@
 </head>
 <body>
   <video autoplay muted loop id="background__video">
-    <source src="contents/vid2.mp4" type="video/mp4">
+    <source src="contents/video.mp4" type="video/mp4">
   </video>
-  <h1>Willkommen im Passwort Generator!</h1>
-  <form onsubmit="return false" class="form__container">    
-    <div class="mb-3">
-      <label for="nr_letters" class="form-label form__text">Wie viele Buchstaben hätten Sie gerne in Ihrem Passwort?</label>
-      <input type="number" min="1" max="20" class="form-control" id="nr_letters" name="nr_letters" value="0">
+  <div class="background__cover"></div>
+  <div class="header__container">
+    <h1 class="header">Willkommen im Passwort Generator!</h1>
+  </div>
+  
+  <div class="page__container">
+    <div class="form__container">
+      <form onsubmit="return false" class="form__container">    
+        <div class="mb-3">
+          <label for="nr_letters" class="form-label form__text">Wie viele Buchstaben hätten Sie gerne in Ihrem Passwort?</label>
+          <input type="number" min="5" max="20" class="form__control" id="nr_letters" name="nr_letters" value="5">
+        </div>
+        <div class="mb-3">
+          <label for="nr_numbers" class="form-label form__text">Wie viele Zahlen hätten Sie gerne in Ihrem Passwort?</label>
+          <input type="number" min="2" max="20" class="form__control" id="nr_numbers" name="nr_numbers" value="2">
+        </div>
+        <div class="mb-3">
+          <label for="nr_symbols" class="form-label form__text">Wie viele Sonderzeichen hätten Sie gerne in Ihrem Passwort?</label>
+          <input type="number" min="1" max="20" class="form__control" id="nr_symbols" name="nr_symbols" value="1">
+        </div>
+        <button pys-onClick="sub" type="submit" id="button">Passwort generieren</button>
+      </form>
     </div>
-    <div class="mb-3">
-      <label for="nr_numbers" class="form-label form__text">Wie viele Zahlen hätten Sie gerne in Ihrem Passwort?</label>
-      <input type="number" min="1" max="20" class="form-control" id="nr_numbers" name="nr_numbers" value="0">
+    <div class="result__container">  
+      <div id="passwordFinal" class="form__text"></div>
     </div>
-    <div class="mb-3">
-      <label for="nr_symbols" class="form-label form__text">Wie viele Sonderzeichen hätten Sie gerne in Ihrem Passwort?</label>
-      <input type="number" min="1" max="20" class="form-control" id="nr_symbols" name="nr_symbols" value="0">
-    </div>
-    <button pys-onClick="sub" type="submit" id="btn">Passwort generieren</button>
-  </form>
-  <div id=passwordFinal></div>
+  </div>
   <py-script>
     def sub(*args, **kwargs):
       import random
