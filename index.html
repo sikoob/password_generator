@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwort Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+<body>
+  <video autoplay muted loop id="background__video">
+    <source src="contents/vid2.mp4" type="video/mp4">
+  </video>
+  <h1>Willkommen im Passwort Generator!</h1>
+  <form onsubmit="return false" class="form__container">    
+    <div class="mb-3">
+      <label for="nr_letters" class="form-label form__text">Wie viele Buchstaben hätten Sie gerne in Ihrem Passwort?</label>
+      <input type="number" min="1" max="20" class="form-control" id="nr_letters" name="nr_letters" value="0">
+    </div>
+    <div class="mb-3">
+      <label for="nr_numbers" class="form-label form__text">Wie viele Zahlen hätten Sie gerne in Ihrem Passwort?</label>
+      <input type="number" min="1" max="20" class="form-control" id="nr_numbers" name="nr_numbers" value="0">
+    </div>
+    <div class="mb-3">
+      <label for="nr_symbols" class="form-label form__text">Wie viele Sonderzeichen hätten Sie gerne in Ihrem Passwort?</label>
+      <input type="number" min="1" max="20" class="form-control" id="nr_symbols" name="nr_symbols" value="0">
+    </div>
+    <button pys-onClick="sub" type="submit" id="btn">Passwort generieren</button>
+  </form>
+  <div id=passwordFinal></div>
+  <py-script>
+    def sub(*args, **kwargs):
+      import random
+      letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ö', 'ä', 'ü', 'ß', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+      numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+      symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+', '"', '@', '?', '/']
+
+
+      nr_letters= int(Element('nr_letters').value)
+      nr_symbols = int(Element('nr_symbols').value)
+      nr_numbers = int(Element('nr_numbers').value)
+
+      lettersPart =""
+      for n in range(0, nr_letters):
+        lettersPart += random.choice(letters)
+
+      numbersPart=""
+      for n in range(0, nr_numbers):
+        numbersPart+= random.choice(numbers)
+
+      symbolsPart=""
+      for n in range(0, nr_symbols):
+        symbolsPart+=random.choice(symbols)
+
+      passwordNonRandom=lettersPart+numbersPart+symbolsPart
+      listPassword= list(passwordNonRandom)
+
+      random.shuffle(listPassword)
+
+      passwordFinal = ''.join(listPassword)
+
+      pyscript.write('passwordFinal', f"Ihr Passwort lautet: {passwordFinal}")
+  </py-script>
+</body>
+</html>
