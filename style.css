@@ -18,6 +18,16 @@
     z-index: -1;
 }
 
+.background__cover{
+    background-color: black;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 40%;
+}
+
 .header__container{
     height: 50%;
     width: 100%;
@@ -44,17 +54,9 @@
 
 .result__container{
     position: absolute;
-    top: 12.5rem;
+    top: 35rem;
     right: 10rem;
     width: 50%;
-}
-
-.button__container{
-    height: 50%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /*Index*/
@@ -64,8 +66,7 @@
     font-size: 8rem;
     top: 10rem;
     font-weight: normal;
-    color: #d8d5db;
-    -webkit-text-stroke: 1px #eae8ff;
+    color: white;
     text-shadow: 0.25rem 0.25rem 0.25rem black;
 }
 
@@ -77,50 +78,14 @@
     height: 6rem;
     width: 25rem;
     border-radius: 1000rem;
-    border-color: #d8d5db;
-    background-color: #eae8ff;
+    border-color: #ffdeda;
+    background-color: #a6564c;
     cursor: pointer;
-}
-
-#button:hover{
-    text-decoration: underline;
-}
-
-/*Register*/
-.headline__register{
-    position: absolute;
-    font-size: 8rem;
-    top: 10rem;
-    font-weight: normal;
-    color: #eae8ff;
-    -webkit-text-stroke: 1px #d8d5db;
+    color: white;
     text-shadow: 0.25rem 0.25rem 0.25rem black;
 }
 
-.background__cover{
-    background-color: black;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    opacity: 45%;
-}
-
-.button__register{
-    position:absolute;
-    top: 25rem;
-    font-size: 2rem;
-    margin: 0 3rem;
-    height: 4rem;
-    width: 21rem;
-    border-radius: 1000rem;
-    border-color: #eae8ff;
-    background-color: #d8d5db;
-    cursor: pointer;
-}
-
-.button__register:hover{
+#button:hover{
     text-decoration: underline;
 }
 
@@ -129,9 +94,26 @@
     position: relative;
     color: white;
     font-size: 2rem;
+    text-shadow: 0.25rem 0.25rem 0.25rem black;
 }
 
 .form__control{
     font-size: 1.5rem;
     text-align:center;
+}
+
+/*Result*/
+.result__text{
+    position: relative;
+    color: white;
+    font-size: 3rem;
+    width: 60rem;
+    left: 5rem;
+    text-shadow: 0.25rem 0.25rem 0.25rem black;
+}
+
+/*Media Queries*/
+
+@media (max-width: 22.5em) {
+
 }

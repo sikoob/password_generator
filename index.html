@@ -39,7 +39,7 @@
       </form>
     </div>
     <div class="result__container">  
-      <div id="passwordFinal" class="form__text"></div>
+      <p class="result__text">Ihr Passwort lautet:<br><p id="passwordFinal" class="result__text"></p></p>
     </div>
   </div>
   <py-script>
@@ -73,7 +73,7 @@
 
       passwordFinal = ''.join(listPassword)
 
-      pyscript.write('passwordFinal', f"Ihr Passwort lautet: {passwordFinal}")
+      pyscript.write('passwordFinal', f"{passwordFinal}")
   </py-script>
 </body>
 </html>
